@@ -1,0 +1,21 @@
+# Large local cache
+cache/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# PyCharm settings
+.idea/
+
+# Windows system files
+Thumbs.db
+
+# Temporary notebook files
+.virtual_documents/
+
+# Large intermediate per-session checkpoints
+results/cross_session_MOs/session_results/

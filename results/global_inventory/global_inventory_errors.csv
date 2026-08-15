@@ -1,0 +1,37 @@
+subject,session,asset_path,error_type,error_message,traceback,failed_at_utc
+CSH-ZAD-001,3e7ae7c0-fe8b-487c-9354-036236fa1010,sub-CSH-ZAD-001/sub-CSH-ZAD-001_ses-3e7ae7c0-fe8b-487c-9354-036236fa1010_desc-processed_behavior+ecephys.nwb,NameError,name 'get_region_acronym' is not defined,"Traceback (most recent call last):
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\2653507522.py"", line 10, in <module>
+    one_session, one_region, one_trial = process_one_session(row, dandiset, CACHE_DIR)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\3317621536.py"", line 17, in process_one_session
+    unit_summary, region_summary = summarize_units_by_region(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\4039408811.py"", line 45, in summarize_units_by_region
+    units_light[""region_acronym""] = units_light[""region_parent""].apply(get_region_acronym).astype(""string"")
+                                                                       ^^^^^^^^^^^^^^^^^^
+NameError: name 'get_region_acronym' is not defined
+",2026-07-25T23:15:42.807417+00:00
+CSH-ZAD-011,03cf52f6-fba6-4743-a42e-dd1ac3072343,sub-CSH-ZAD-011/sub-CSH-ZAD-011_ses-03cf52f6-fba6-4743-a42e-dd1ac3072343_desc-processed_behavior+ecephys.nwb,NameError,name 'get_region_acronym' is not defined,"Traceback (most recent call last):
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\2653507522.py"", line 10, in <module>
+    one_session, one_region, one_trial = process_one_session(row, dandiset, CACHE_DIR)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\3317621536.py"", line 17, in process_one_session
+    unit_summary, region_summary = summarize_units_by_region(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\4039408811.py"", line 45, in summarize_units_by_region
+    units_light[""region_acronym""] = units_light[""region_parent""].apply(get_region_acronym).astype(""string"")
+                                                                       ^^^^^^^^^^^^^^^^^^
+NameError: name 'get_region_acronym' is not defined
+",2026-07-25T23:15:56.654872+00:00
+CSH-ZAD-011,5b44c40f-80f4-44fb-abfb-c7f19e27a6ca,sub-CSH-ZAD-011/sub-CSH-ZAD-011_ses-5b44c40f-80f4-44fb-abfb-c7f19e27a6ca_desc-processed_behavior+ecephys.nwb,NameError,name 'get_region_acronym' is not defined,"Traceback (most recent call last):
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\2653507522.py"", line 10, in <module>
+    one_session, one_region, one_trial = process_one_session(row, dandiset, CACHE_DIR)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\3317621536.py"", line 17, in process_one_session
+    unit_summary, region_summary = summarize_units_by_region(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\dell\AppData\Local\Temp\ipykernel_22824\4039408811.py"", line 45, in summarize_units_by_region
+    units_light[""region_acronym""] = units_light[""region_parent""].apply(get_region_acronym).astype(""string"")
+                                                                       ^^^^^^^^^^^^^^^^^^
+NameError: name 'get_region_acronym' is not defined
+",2026-07-25T23:16:10.784699+00:00
