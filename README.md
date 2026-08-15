@@ -164,7 +164,7 @@ Principal component analysis (PCA) was used to visualize population trajectories
 
 PCA was used only for visualization. Formal left-right population separation was quantified in the full neuron-dimensional space using root-mean-square (RMS) distance:
 
-$$
+```math
 D_{\mathrm{RMS}}(t)
 =
 \sqrt{
@@ -172,11 +172,11 @@ D_{\mathrm{RMS}}(t)
 \sum_{i=1}^{N}
 \left[L_i(t)-R_i(t)\right]^2
 }
-$$
+```
 
 where $N$ is the number of neurons, and $L_i(t)$ and $R_i(t)$ denote the normalized population activity of neuron $i$ for left- and right-stimulus trials at time $t$.
-Population excursion quantified the distance of the evoked population state from its pre-stimulus baseline state.Population excursion quantified the distance of the evoked population state from its pre-stimulus baseline state.
 
+Population excursion quantified the distance of the evoked population state from its pre-stimulus baseline state.
 ### Cross-subject statistics
 
 Repeated sessions from the same animal were averaged within subject before inferential statistics.
