@@ -214,6 +214,78 @@ Final multi-panel figures are assembled from notebook-generated results using sc
 
 Raw NWB files are not included in this repository and should be obtained directly from DANDI.
 
+## How to run
+
+### 1. Environment
+
+`environment.yml` pins the exact package versions that were used to produce the
+files in `results/`.
+
+```bash
+conda env create -f environment.yml -n neuro
+conda activate neuro
+jupyter lab
+```
+
+All notebooks are stored with the Jupyter kernel `Python (neuro)`
+(`kernelspec.name = neuro`). Create the environment with that name, or select the
+equivalent kernel manually (Kernel → Change Kernel).
+
+### 2. Data
+
+The raw NWB files are not stored in this repository and do **not** need to be
+downloaded manually. The data-reading notebooks open the NWB assets directly from
+DANDI:
+
+- **Dandiset:** 000409, **version:** 0.260309.1324 — the value of `VERSION` in the
+  notebooks; every notebook that reads data passes it as `version_id=VERSION`.
+- **Mechanism:** `dandi.dandiapi.DandiAPIClient` resolves each asset to its S3 URL and
+  `remfile` streams the HDF5 content, so only the chunks that are read are transferred.
+- **Local cache:** reads are cached on disk under `cache/remfile/` (git-ignored).
+- **Network:** required for `01`, `02`, `04a`, `04b` and `06`. No DANDI credentials are
+  configured in the notebooks; the dandiset is public.
+
+### 3. Notebook run order
+
+The notebooks resolve the repository root as `Path.cwd().parent`, i.e. they must be run
+with `notebooks/` as the working directory. Start JupyterLab from the repository root:
+
+```bash
+jupyter lab notebooks
+```
+
+| Step | Notebook | Reads | Writes |
+| --- | --- | --- | --- |
+| 1 | `01_session_inventory` | DANDI | `results/session_inventory.csv` |
+| 2 | `02_global_session_region_inventory` | `results/session_inventory.csv`, DANDI | `results/global_inventory/` (4 CSV files) |
+| 3 | `03_select_candidate_sessions` | step 2 outputs | `results/candidate_sessions/` (3 CSV files) |
+| 4a | `04a_extract_prototype_session` (VISp) | `VISp_eligible_sessions.csv`, DANDI | `results/prototype_sessions/e349a2e7-981c-4347-8e5e-5d5fffe38534/` (5 files) |
+| 5a | `05a_single_session_population_dynamics_VISp` | step 4a outputs | `results/figures/Primary_visual_area_e349a2e7/` |
+| 4b | `04b_extract_prototype_session` (MOs) | step 2 outputs, DANDI | `results/prototype_sessions/4d8c7767-981c-4347-8e5e-5d5fffe38534/` (5 files) |
+| 5b | `05b_single_session_population_dynamics_MOs` | step 4b outputs | `results/figures/Secondary_motor_area_4d8c7767/` |
+| 6 | `06_cross-session_batch_analysis_MOs` | step 2 outputs, DANDI | `results/cross_session_MOs/` |
+
+- After step 2 the *3 → 4a → 5a* (VISp) and *4b → 5b* (MOs) branches are independent.
+- Step 6 is independent of the 4/5 branch: it re-extracts every MOs session itself and
+  caches per-session intermediates under `results/cross_session_MOs/session_results/`
+  (git-ignored).
+- Steps `03`, `05a` and `05b` do not read from DANDI; they only need local files.
+
+### 4. Final figures
+
+`final_project/scripts/make_figure{1,2,3,4}.py` assemble the multi-panel figures:
+
+| Script | Inputs |
+| --- | --- |
+| `make_figure1.py` | none (drawn schematic, no file reads) |
+| `make_figure2.py` | images in `results/figures/Secondary_motor_area_4d8c7767/` (step 5b) |
+| `make_figure3.py` | images in `results/cross_session_MOs/summary_figures/` (step 6) |
+| `make_figure4.py` | `results/cross_session_MOs/tables/` CSV and an image from `results/cross_session_MOs/summary_figures/` (step 6) |
+
+**Note:** these scripts contain absolute paths from the machine on which the analysis was
+performed (e.g. `D:\Ephys_analysis\ibl-population-dynamics\...`), so running them on a copy
+of the repository in another location requires updating those constants.
+
 ## Repository structure
 
 ```text
