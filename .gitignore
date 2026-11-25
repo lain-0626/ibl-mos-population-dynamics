@@ -1,3 +1,7 @@
+# Raw extracellular recordings downloaded from DANDI (not redistributed)
+data/
+*.nwb
+
 # Large local cache
 cache/
 

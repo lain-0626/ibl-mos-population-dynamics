@@ -1,0 +1,43 @@
+# Environment for the IBL MOs population-dynamics analysis notebooks.
+#
+# Reconstructed from the local Anaconda environment "neuro" on Windows:
+#   - `conda env export -n neuro --from-history` lists only python=3.11,
+#     i.e. every third-party package below was installed with pip.
+#   - The pip section is cross-checked against the modules actually imported
+#     by the notebooks: dandi, h5py, numpy, pandas, pynwb, remfile, tqdm,
+#     matplotlib, scipy, sklearn (= scikit-learn). Standard-library imports
+#     (pathlib, re, datetime, gc, hashlib, traceback) are not listed.
+#   - Version pins are the exact versions installed in "neuro", which are the
+#     versions that produced the files under results/ and final_project/.
+#     They are pinned for reproducibility; expect them to age.
+#   - jupyterlab / ipykernel are not imported by notebook code but are required
+#     to open and run the notebooks.
+#
+# `name:` and `prefix:` are intentionally omitted. To create the environment
+# with the same name as the original:
+#
+#   conda env create -f environment.yml -n neuro
+#
+# (Without -n, conda derives the environment name from this file's directory.)
+
+channels:
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      # --- imported by the analysis notebooks ---
+      - dandi==0.76.7
+      - h5py==3.16.0
+      - matplotlib==3.11.0
+      - numpy==2.4.6
+      - pandas==3.0.3
+      - pynwb==4.0.0
+      - remfile==0.1.14
+      - scikit-learn==1.9.0
+      - scipy==1.17.1
+      - tqdm==4.68.4
+      # --- needed to run the notebooks, not imported by notebook code ---
+      - ipykernel==7.3.0
+      - jupyterlab==4.6.1
