@@ -197,22 +197,27 @@ This analysis identified a significant positive contrast-dependent cluster from 
 
 The analysis workflow is organized as a sequence of Jupyter notebooks, progressing from dataset inventory and session screening to representative single-session analyses and cross-subject inference.
 
-The main analysis notebooks are:
+The main analysis notebooks (in `notebooks/`) are:
 
 - `01_session_inventory.ipynb`
-- `01b_single_session_metadata_prototype.ipynb`
 - `02_global_session_region_inventory.ipynb`
 - `03_select_candidate_sessions.ipynb`
-- `04_extract_prototype_session.ipynb`
+- `04a_extract_prototype_session.ipynb`
 - `04b_extract_prototype_session.ipynb`
-- `04b_pre_session_search_MOs.ipynb`
 - `05a_single_session_population_dynamics_VISp.ipynb`
 - `05b_single_session_population_dynamics_MOs.ipynb`
 - `06_cross-session_batch_analysis_MOs.ipynb`
 
+Two exploratory notebooks are kept for reference in `notebooks/archive/`. They are not
+needed to reproduce the results: they read outputs of earlier notebooks but write no
+files of their own, and no notebook depends on them.
+
+- `archive/01b_a_single_session_metadata_prototype.ipynb`
+- `archive/04b_pre_session_search_MOs.ipynb`
+
 Final multi-panel figures are assembled from notebook-generated results using scripts in `final_project/scripts/`.
 
-Raw NWB files are not included in this repository and should be obtained directly from DANDI.
+Raw NWB files are not included in this repository; they are read directly from DANDI at run time (see [How to run](#how-to-run)).
 
 ## How to run
 
@@ -289,15 +294,19 @@ of the repository in another location requires updating those constants.
 ## Repository structure
 
 ```text
-ibl-population-dynamics/
+ibl-mos-population-dynamics/
 ├── notebooks/          # Analysis notebooks
+│   └── archive/        # Exploratory notebooks kept for reference (not part of the pipeline)
 ├── results/            # Intermediate tables and notebook-generated figures
 ├── final_project/
 │   ├── figures/        # Final Figures 1–4
 │   └── scripts/        # Scripts for assembling final figures
+├── environment.yml     # Pinned analysis environment
 ├── README.md
 └── LICENSE
 ```
+
+`cache/` (the local DANDI read cache) is created at run time and is git-ignored.
 
 ## Data availability
 
